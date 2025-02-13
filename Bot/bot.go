@@ -133,6 +133,29 @@ func (t *TGBot) SendMessage(chatID int, text string) (Message, error) {
 
 	return message, err
 }
+func (t *TGBot) DeleteMessage(chatID int, messageID int) error {
+	deleteMessagePath, err := url.JoinPath(t.URL.String(), consts.MethodDeleteMessage)
+	if err != nil {
+		return err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, deleteMessagePath, nil)
+	if err != nil {
+		return err
+	}
+
+	query := url.Values{}
+	query.Add("chat_id", strconv.Itoa(chatID))
+	query.Add("message_id", strconv.Itoa(messageID))
+
+	var client http.Client
+	_, err = client.Do(req)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
 
 func New(token string) TGBot {
 	return TGBot{
@@ -143,15 +166,11 @@ func New(token string) TGBot {
 		},
 	}
 }
-func PrintUpdates(updates []Update) int {
-	var res int
+func PrintUpdates(updates []Update) {
 	if len(updates) == 0 {
 		log.Printf("Message: no message")
-		return 0
 	}
 	for _, update := range updates {
 		log.Printf("Message: %s\n", update.Message.Text)
-		res = update.UpdateID
 	}
-	return res + 1
 }

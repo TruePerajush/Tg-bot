@@ -1,9 +1,9 @@
 package consts
 
 const (
-	repHello   = ""
-	repHelp    = ""
-	repRnd     = ""
-	repRm      = ""
-	repUnknown = ""
+	RepHello   = "Привет, я могу сохранять ссылки и выдавать их в рандомном порядке"
+	RepHelp    = "Я могу сохранять ссылки и выдавать их в рандомном порядке"
+	RepRnd     = "Рандомная ссылка"
+	RepRm      = "Удаление"
+	RepUnknown = "Неизвестная комманда"
 )

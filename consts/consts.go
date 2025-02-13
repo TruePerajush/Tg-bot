@@ -3,15 +3,16 @@ package consts
 import "errors"
 
 const (
-	TgBotHost         = "api.telegram.org"
-	MethodGetMe       = "getMe"
-	MethodGetUpdates  = "getUpdates"
-	MethodSendMessage = "sendMessage"
+	TgBotHost           = "api.telegram.org"
+	MethodGetMe         = "getMe"
+	MethodGetUpdates    = "getUpdates"
+	MethodSendMessage   = "sendMessage"
+	MethodDeleteMessage = "deleteMessage"
 
-	msgStart = "/start"
-	msgHelp  = "/help"
-	msgRnd   = "/rnd"
-	msgRm    = "/rm"
+	MsgStart = "/start"
+	MsgHelp  = "/help"
+	MsgRnd   = "/rnd"
+	MsgRm    = "/rm"
 )
 
 var CantReachBot = errors.New("can't reach bot")
